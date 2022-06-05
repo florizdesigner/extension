@@ -11,39 +11,47 @@
   ],
   "api": [
     {
-      "id": 1,
-      "name": "nameNull",
-      "body": "bodyNull",
-      "module": "moduleNull",
+      "id": 0,
+      "name": "HTTP-уведомление (TraceID по uniLabel)",
+      "body": "Payload: \"uniLabel\" && methodid: (\"QUEUE/eventQueue\")",
+      "module": "backend-notifier-main",
       "description": "descriptionNull",
-      "link": ""
+      "link": "https://kibana.yooteam.ru/goto/8150b017987e4c83ed5a50337ac025d7"
     },
     {
-      "id": 2,
-      "name": "name_api1",
-      "body": "body_api1",
-      "module": "module_api1",
-      "description": "description_api1",
-      "link": "https://yoomoney.ru/docs/wallet"
+      "id": 1,
+      "name": "HTTP-уведомление (Статус по TraceID)",
+      "body": "traceid: \"трейс\" && Payload: (\"httpStatus=\")",
+      "module": "backend-notifier-main",
+      "description": "",
+      "link": "https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
     }
   ],
   "payments": [
     {
-      "id": 0,
-      "name": "nameNull",
-      "body": "bodyNull",
-      "module": "moduleNull",
-      "description": "descriptionNull",
-      "link": ""
-    },
+			"id": 0,
+			"name": "Причина в Кассе",
+			"body": "Payload: \"uniLabel\" && Payload: (\"warn\" \"error\" \"auth check unsuccessful\" \"restrictionid\")	&& NOT Payload: (\"error=null\" \"errors=null\" \"error=optional\" \"error=optional.empty\" \"skip loyalty-gate request\" \"rollbackpayment\")",
+			"module": "backend-kassa-main",
+      "description": "",
+      "link": "https://kibana.yooteam.ru/goto/79eb1a0c5c53bdf05a6cb327cfcf801c"
+		},
     {
-      "id": 1,
-      "name": "name_pay1",
-      "body": "body_pay1",
-      "module": "module_pay1",
-      "description": "description_pay1",
-      "link": "https://yoomoney.ru/oplata"
-    }
+			"id": 1,
+			"name": "Ответ в шопах",
+			"body": "traceid: \"TraceID\" && Payload: (\"create-order-refused\" \"payment approval error\")",
+			"module": "backend-shop-main",
+      "description": "",
+      "link": "https://kibana.yooteam.ru/goto/ecf29c74544352cd8c398c915c73ebfd"
+		},
+    {
+			"id": 2,
+			"name": "Поиск платежа по кошельку без попытки",
+			"body": "Payload: \"Кошелек\" && Payload: \"CreateShopOrderRequest\"",
+			"module": "backend-kassa-main",
+      "description": "",
+      "link": "https://kibana.yooteam.ru/goto/fb7353afe255b31cc51f87449d256a28"
+		}
   ],
   "transfers": [
     {
