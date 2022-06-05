@@ -31,7 +31,7 @@
     {
 			"id": 0,
 			"name": "Причина в Кассе",
-			"body": "Payload: \"uniLabel\" && Payload: (\"warn\" \"error\" \"auth check unsuccessful\" \"restrictionid\")	&& NOT Payload: (\"error=null\" \"errors=null\" \"error=optional\" \"error=optional.empty\" \"skip loyalty-gate request\" \"rollbackpayment\")",
+			"body": "Payload: \"uniLabel\" && Payload: (\"warn\" \"error\" \"auth check unsuccessful\" \"restrictionid\") && NOT Payload: (\"error=null\" \"errors=null\" \"error=optional\" \"error=optional.empty\" \"skip loyalty-gate request\" \"rollbackpayment\")",
 			"module": "backend-kassa-main",
       "description": "",
       "link": "https://kibana.yooteam.ru/goto/79eb1a0c5c53bdf05a6cb327cfcf801c"
