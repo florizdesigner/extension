@@ -1,0 +1,67 @@
+{
+  "null": [
+    {
+      "id": 0,
+      "name": "nameNull",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    }
+  ],
+  "api": [
+    {
+      "id": 1,
+      "name": "nameNull",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    },
+    {
+      "id": 2,
+      "name": "name_api1",
+      "body": "body_api1",
+      "module": "module_api1",
+      "description": "description_api1",
+      "link": "https://yoomoney.ru/docs/wallet"
+    }
+  ],
+  "payments": [
+    {
+      "id": 0,
+      "name": "nameNull",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    },
+    {
+      "id": 1,
+      "name": "name_pay1",
+      "body": "body_pay1",
+      "module": "module_pay1",
+      "description": "description_pay1",
+      "link": "https://yoomoney.ru/oplata"
+    }
+  ],
+  "transfers": [
+    {
+      "id": 0,
+      "name": "nameNull",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    },
+    {
+      "id": 1,
+      "name": "name_transfer1",
+      "body": "body_transfer1",
+      "module": "module_transfer1",
+      "description": "description_transfer1",
+      "link": "https://yoomoney.ru/transfer"
+    }
+  ]
+
+}
