@@ -9,7 +9,7 @@
       "link": ""
     }
   ],
-  "Сбор денег и API": [
+  "api": [
     {
       "id": 0,
       "name": "HTTP-уведомление (TraceID по uniLabel)",
