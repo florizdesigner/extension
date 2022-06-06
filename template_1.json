@@ -1,102 +1,149 @@
 {
-        "null":[
-            {
-                "id":0,
-                "name":"nameNull",
-                "body":"bodyNull",
-                "module":"moduleNull",
-                "description":"descriptionNull",
-                "classname": "null",
-                "link":""
-            }
-        ],
-        "actual":[
-            {
-                "id":0,
-                "name":"act1",
-                "body":"bodyNull",
-                "module":"moduleNull",
-                "classname": "Актуальное",
-                "description":"descriptionNull",
-                "link":""
-            },
-            {
-                "id":1,
-                "name":"act2",
-                "body":"bodyNull",
-                "module":"moduleNull",
-                "classname": "actual",
-                "description":"descriptionNull",
-                "link":""
-            }
-        ],
-        "api":[
-            {
-                "id":0,
-                "name":"HTTP-уведомление (TraceID по uniLabel)",
-                "body":"Payload: \"uniLabel\" && methodid: (\"QUEUE/eventQueue\")",
-                "module":"backend-notifier-main",
-                "description":"descriptionNull",
-                "classname": "Сбор денег и API",
-                "link":"https://kibana.yooteam.ru/goto/8150b017987e4c83ed5a50337ac025d7"
-            },
-            {
-                "id":1,
-                "name":"HTTP-уведомление (Статус по TraceID)",
-                "body":"traceid: \"трейс\" && Payload: (\"httpStatus=\")",
-                "module":"backend-notifier-main",
-                "description":"",
-                "classname": "Сбор денег и API",
-                "link":"https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
-            }
-        ],
-        "payments":[
-            {
-                "id":0,
-                "name":"Причина в Кассе",
-                "body":"Payload: \"uniLabel\" && Payload: (\"warn\" \"error\" \"auth check unsuccessful\" \"restrictionid\") && NOT Payload: (\"error=null\" \"errors=null\" \"error=optional\" \"error=optional.empty\" \"skip loyalty-gate request\" \"rollbackpayment\")",
-                "module":"backend-kassa-main",
-                "description":"",
-                "classname": "Оплата",
-                "link":"https://kibana.yooteam.ru/goto/79eb1a0c5c53bdf05a6cb327cfcf801c"
-            },
-            {
-                "id":1,
-                "name":"Ответ в шопах",
-                "body":"traceid: \"TraceID\" && Payload: (\"create-order-refused\" \"payment approval error\")",
-                "module":"backend-shop-main",
-                "description":"",
-                "classname": "Оплата",
-                "link":"https://kibana.yooteam.ru/goto/ecf29c74544352cd8c398c915c73ebfd"
-            },
-            {
-                "id":2,
-                "name":"Поиск платежа по кошельку без попытки",
-                "body":"Payload: \"Кошелек\" && Payload: \"CreateShopOrderRequest\"",
-                "module":"backend-kassa-main",
-                "description":"",
-                "classname": "Оплата",
-                "link":"https://kibana.yooteam.ru/goto/fb7353afe255b31cc51f87449d256a28"
-            }
-        ],
-        "transfers":[
-            {
-                "id":0,
-                "name":"nameNull",
-                "body":"bodyNull",
-                "module":"moduleNull",
-                "description":"descriptionNull",
-                "classname": "Переводы",
-                "link":""
-            },
-            {
-                "id":1,
-                "name":"name_transfer1",
-                "body":"body_transfer1",
-                "module":"module_transfer1",
-                "description":"description_transfer1",
-                "classname": "Переводы",
-                "link":"https://yoomoney.ru/transfer"
-            }
-        ]
-    }
+    "null":[
+        {
+            "id":0,
+            "name":"nameNull",
+            "body":"bodyNull",
+            "module":"moduleNull",
+            "description":"descriptionNull",
+            "classname": "null",
+            "link":""
+        }
+    ],
+    "actual":[
+        {
+            "id": 0,
+            "name":"Не проходит перевод из-за гражданства",
+            "body":"Payload: (\"Non resident with RUS country\" && \"номер_кошелька\")",
+            "module":"backend-transfers-main",
+            "classname": "Актуальное",
+            "description":"Если мы встречаем такую ошибку, проверяем приказы на ИД (у них будет иностр.паспорт + РФ гражданство). Отдаём в кошелёк и просим повторить через час после принятия приказа",
+            "link":"https://kibana.yooteam.ru/goto/4cdc74f181a57aaccefc09324c0f9de9"
+        }
+    ],
+    "api":[
+        {
+            "id":0,
+            "name":"HTTP-уведомление (TraceID по uniLabel)",
+            "body":"Payload: \"uniLabel\" && methodid: (\"QUEUE/eventQueue\")",
+            "module":"backend-notifier-main",
+            "description":"descriptionNull",
+            "classname": "Сбор денег и API",
+            "link":"https://kibana.yooteam.ru/goto/8150b017987e4c83ed5a50337ac025d7"
+        },
+        {
+            "id":1,
+            "name":"HTTP-уведомление (Статус по TraceID)",
+            "body":"traceid: \"трейс\" && Payload: (\"httpStatus=\")",
+            "module":"backend-notifier-main",
+            "description":"",
+            "classname": "Сбор денег и API",
+            "link":"https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
+        },
+        {
+            "id":2,
+            "name":"Техническая ошибка при создании приложения",
+            "body":"methodid: \"POST/internal/api/createService\" AND Payload: \"номер_кошелька\"",
+            "module":"backend-oauth-storage-main",
+            "description":"Проваливаемся по трейсу и видим ошибку",
+            "classname": "Сбор денег и API",
+            "link":"https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
+        }
+    ],
+    "payments":[
+        {
+            "id": 0,
+            "name":"Причина в Кассе",
+            "body":"Payload: \"uniLabel\" && Payload: (\"warn\" \"error\" \"auth check unsuccessful\" \"restrictionid\") && NOT Payload: (\"error=null\" \"errors=null\" \"error=optional\" \"error=optional.empty\" \"skip loyalty-gate request\" \"rollbackpayment\")",
+            "module":"backend-kassa-main",
+            "description":"",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/79eb1a0c5c53bdf05a6cb327cfcf801c"
+        },
+        {
+            "id": 1,
+            "name":"Ответ в шопах",
+            "body":"traceid: \"TraceID\" && Payload: (\"create-order-refused\" \"payment approval error\")",
+            "module":"backend-shop-main",
+            "description":"",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/ecf29c74544352cd8c398c915c73ebfd"
+        },
+        {
+            "id": 2,
+            "name":"Поиск платежа по кошельку без попытки",
+            "body":"Payload: \"Кошелек\" && Payload: \"CreateShopOrderRequest\"",
+            "module":"backend-kassa-main",
+            "description":"",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/fb7353afe255b31cc51f87449d256a28"
+        },
+        {
+            "id": 3,
+            "name":"Поиск платежа по выставленному счёту",
+            "body":"Payload: \"payerInvoiceId=номер_выставленного_счёта\"",
+            "module":"backend-dashboard-main",
+            "description":"По ссылке, которую отправил КА. Например: https://yookassa.ru/my/i/YcGQvS0QIoly (в данном случае счёт уже оплачен) \n Убираем всё лишнее, в запросе только оставляем \"payerInvoiceId=YcGQvS0QIoly\", находим трейс, проваливаемся по нему. \nВ поле orderNumber мы получаем первые 5-6 цифр — shopid, в данном случае 790053. Если платёж был недавно, в backend-kassa-main можем найти инвойс по номеру заказа",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/5bc951994dd68c402bdfd986040a08ee"
+        },
+        {
+            "id": 4,
+            "name":"Видим ошибку в Кассе, но в шопах ничего",
+            "body":"Payload: \"uniLabel или метка\"",
+            "module":"backend-ecombank-main",
+            "description": "Находим единственную запись, проваливаемся в трейс и видим причину ошибки (чаще всего это restrictionid)",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/daa895460b9feb45eeb482438cd965e0"
+        },
+        {
+            "id": 5,
+            "name":"Поиск платежа через SberPay",
+            "body":"Payload: (\"666666******4444\" && \"Сумма\")",
+            "module":"backend-sber-pay-adapter-back-main",
+            "description": "Нам интересено значение YooMoneyOperationId, эту метку копируем и идём в ШМ (запись есть не всегда) или АРМ Payments",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/72f212e738f4f1725efdbd078ff8e4ac"
+        }
+    ],
+    "transfers":[
+        {
+            "id":0,
+            "name":"Не получается пополнить через СБП",
+            "body":"methodid: \"POST/shiro/json-json-api/api/getAccountByPhone\" AND Payload: \"номер кошелька\"",
+            "module":"backend-shiro-main",
+            "description":"Валимся в трейс, где мы можем увидеть маску номеру и список привязанных кошельков, при необходимости, по трейсу можем перейти в backend-deposit-main и проверить там неуспешную попытку пополнения",
+            "classname": "Переводы",
+            "link":"https://kibana.yooteam.ru/goto/f68d3c0c8605f4ded60d624b6782d9dd"
+        },
+        {
+            "id": 1,
+            "name":"Поиск лимитов через СБП v1",
+            "body": "Payload: (\"синоним_паспорта\" && \"restrictionid=39\" && \"restrictionid=42\")",
+            "module":"backend-ecombank-main",
+            "description":"RestrictionID 39 = суточный, restrictionid 42 = месячный",
+            "classname": "Переводы",
+            "link":"https://kibana.yooteam.ru/goto/a5f1e7fd6746fec4ab497ea63881de81"
+        },
+        {
+            "id":2,
+            "name":"Поиск лимитов через СБП v2",
+            "body":"Payload: (\"номер_кошелька\" AND \"requestid\")",
+            "module":"backend-sbp-adapter-main",
+            "description":"Находим попытку по времени, берём значение requestId и идём в backend-transfers-main, далее валимся в трейс и ищем \"Sbp limits\"",
+            "classname": "Переводы",
+            "link":"https://kibana.yooteam.ru/goto/9e48602e1c2ec8ecfbd0e4f09f294dfd"
+        }
+    ],
+    "other": [
+        {
+            "id": 0,
+            "name":"Формирование выписок на портале",
+            "body": "methodid: \"POST/shiro/profile/account/statement/create\" AND Payload: \"sendTo=vyacheslav.sokolovv@icloud.com\"",
+            "module":"backend-shiro-main",
+            "description":"Нужно провалиться по трейсу, там можно проследить ход формирования выписки. Успех = отправка письма на почту пользователя (будет в самом конце)",
+            "classname": "Остальное",
+            "link":"https://kibana.yooteam.ru/goto/232d9d0e87a43a0164a088f9d5d84c8c"
+        }
+    ]
+}
