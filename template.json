@@ -9,7 +9,7 @@
       "link": ""
     }
   ],
-  "api": [
+  "Сбор денег и API": [
     {
       "id": 0,
       "name": "HTTP-уведомление (TraceID по uniLabel)",
@@ -27,7 +27,7 @@
       "link": "https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
     }
   ],
-  "payments": [
+  "Оплата": [
     {
 			"id": 0,
 			"name": "Причина в Кассе",
@@ -53,7 +53,7 @@
       "link": "https://kibana.yooteam.ru/goto/fb7353afe255b31cc51f87449d256a28"
 		}
   ],
-  "transfers": [
+  "Переводы": [
     {
       "id": 0,
       "name": "nameNull",
@@ -70,6 +70,24 @@
       "description": "description_transfer1",
       "link": "https://yoomoney.ru/transfer"
     }
-  ]
+  ],
+"Актуальное": [
+	{
+      "id": 0,
+      "name": "act1",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    },
+	{
+      "id": 1,
+      "name": "act2",
+      "body": "bodyNull",
+      "module": "moduleNull",
+      "description": "descriptionNull",
+      "link": ""
+    }
+]
 
 }
