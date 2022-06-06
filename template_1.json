@@ -48,9 +48,27 @@
             "description":"Проваливаемся по трейсу и видим ошибку",
             "classname": "Сбор денег и API",
             "link":"https://kibana.yooteam.ru/goto/7dda385bcbf753c6df1bbbdea4aae588"
+        },
+        {
+            "id":3,
+            "name":"HTTP-уведомление (Статус по адресу обработчика)",
+            "body":"Payload: \"Сайт\" && Payload: (\"HttpNotifier\" \"LogginingAsyncHttpFilter\" \"status=\")",
+            "module":"backend-notifier-main",
+            "description":"—",
+            "classname": "Сбор денег и API",
+            "link":"https://kibana.yooteam.ru/goto/8e46c14580cf68476b485b00980d7f0a"
+        },
+        {
+            "id":4,
+            "name":"Неактивна кнопка \"Дальше\" или \"Заплатить\"",
+            "body":"methodid: \"POST/getTransferContract\" && Payload: (\"номер кошелька\" && \"label\")",
+            "module":"backend-transfers-main",
+            "description":"Возникает из-за превышения количества символов в label (более 64). Проверить можно тут: https://text.ru/seo/ . Берём label и проверям по ссылке",
+            "classname": "Сбор денег и API",
+            "link":"https://kibana.yooteam.ru/goto/5c00ada7b92e5653eb515e97407fba4e"
         }
     ],
-    "payments":[
+    "payments": [
         {
             "id": 0,
             "name":"Причина в Кассе",
@@ -104,6 +122,24 @@
             "description": "Нам интересено значение YooMoneyOperationId, эту метку копируем и идём в ШМ (запись есть не всегда) или АРМ Payments",
             "classname": "Оплата",
             "link":"https://kibana.yooteam.ru/goto/72f212e738f4f1725efdbd078ff8e4ac"
+        },
+        {
+            "id":6,
+            "name":"Поиск подписки по e-mail",
+            "body":"Payload: \"Почта\" && Payload: (\"PaymentAvisoCommand\" \"NotifyPaymentHeldCommand\" \"operationLabel\" \"merchantOrderId\")",
+            "module":"backend-shop-main",
+            "description":"descriptionNull",
+            "classname": "Оплата",
+            "link":"https://kibana.yooteam.ru/goto/305c9f092d76dc0b82849d1714f78436"
+        },
+        {
+                "id":7,
+                "name":"Поиск займа на карту юзера через наш лайт",
+                "body":"Payload: \"XXXXXX YYYY\" && Payload: (\"CreateOrderCommand\" \"nst_unilabel=\" \"payerAccount\")",
+                "module":"backend-deposit-main",
+                "description":"descriptionNull",
+                "classname": "Оплата",
+                "link":"https://kibana.yooteam.ru/goto/a7df15c45de35096d3a9af9a07792c81"
         }
     ],
     "transfers":[
